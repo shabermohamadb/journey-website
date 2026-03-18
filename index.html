@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenitzu | Belmont Clan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Audio Context Unlocker (Browser Policy Bypass) -->
+    <div id="start-overlay"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #030305; z-index: 9999; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-direction: column; gap: 20px;">
+        <div class="glitch-text"
+            style="font-size: 2rem; color: var(--primary-cyan); font-family: 'Orbitron', sans-serif; letter-spacing: 4px;">
+            SYSTEM STANDBY</div>
+        <div class="pulse-prompt" style="font-family: monospace; font-size: 1.2rem; color: #fff;">[ CLICK TO INITIATE
+            BOOT SEQUENCE ]</div>
+    </div>
+
+    <div id="flash-bang"></div>
+    <!-- Core Effects Layer -->
+    <div id="mouse-glow"></div>
+    <canvas id="particles-bg"></canvas>
+
+    <!-- Sound Effects Placeholders -->
+    <audio id="sfx-punch" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"
+        preload="auto"></audio>
+    <audio id="sfx-glass" src="https://assets.mixkit.co/active_storage/sfx/2771/2771-preview.mp3"
+        preload="auto"></audio>
+    <audio id="sfx-enter" src="https://www.soundjay.com/button/sounds/button-30.mp3" preload="auto"></audio>
+    <audio id="sfx-nav-hover" src="https://www.soundjay.com/button/sounds/button-09.mp3" preload="auto"></audio>
+    <audio id="sfx-nav-click" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+        preload="auto"></audio>
+    <audio id="sfx-card-hover" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
+    <audio id="sfx-modal-open" src="https://www.soundjay.com/button/sounds/button-16.mp3" preload="auto"></audio>
+    <audio id="sfx-typing" src="https://assets.mixkit.co/active_storage/sfx/2573/2573-preview.mp3" preload="auto"
+        loop></audio>
+    <audio id="sfx-logo-reveal" src="https://assets.mixkit.co/active_storage/sfx/2576/2576-preview.mp3"
+        preload="auto"></audio>
+
+    <!-- Intro Screen -->
+    <div id="intro-screen">
+        <div class="crt-overlay"></div>
+        <div class="glass-layer" id="glass-layer">
+            <div class="terminal-container" id="terminal-container">
+                <div class="terminal-text" id="terminal-text"></div>
+                <div class="cursor"></div>
+            </div>
+            <div class="crack" id="crack"></div>
+        </div>
+
+        <div class="intro-content hidden" id="intro-content">
+            <div class="logo-container" id="logo-container">
+                <img src="LOGO/logo.jpg.jpg" alt="Belmont Logo" class="clan-logo clan-logo3d" id="clan-logo">
+            </div>
+            <h1 class="glitch-text" data-text="BELMONT CLAN">BELMONT CLAN</h1>
+            <button id="enter-btn" class="cyber-btn hidden">CLICK TO ENTER YOUR JOURNEY</button>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="main-layout" class="hidden">
+
+        <!-- Profile Sidebar -->
+        <aside class="profile-sidebar">
+            <div class="profile-card tilt-card">
+                <div class="card-glow"></div>
+                <div class="profile-img-container">
+                    <img src="PROFILE/1398035.jpg" alt="Zenitzu" class="profile-img">
+                </div>
+                <h2 class="hero-name">ZENITZU</h2>
+                <div class="profile-details">
+                    <p><span class="label">Real Name:</span> Shaber Mohamad B</p>
+                    <p><span class="label">Domain:</span> Game Developer</p>
+                    <p><span class="label">Clan:</span> Belmont</p>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <button class="nav-btn active" data-target="skills">SKILLS</button>
+                <button class="nav-btn" data-target="projects">PROJECTS</button>
+                <button class="nav-btn" data-target="memories">CLAN MEMORIES</button>
+                <button class="nav-btn" data-target="bash">WEEKLY BASH</button>
+                <button class="nav-btn" data-target="members">MEMBERS</button>
+                <button class="nav-btn" data-target="experience">EXPERIENCE</button>
+                <button class="nav-btn" data-target="game">MINI GAME</button>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+
+            <!-- Context Mask for Transitions -->
+            <div class="section-container">
+
+                <!-- Skills Section -->
+                <section id="skills" class="content-section active">
+                    <h2 class="section-title">SKILL ARSENAL</h2>
+                    <div class="world-map-container">
+                        <div class="world-map">
+                            <!-- Nodes put inside the map to orbit in 3D -->
+                            <div class="skill-node node-1 tilt-card">
+                                <div class="icon">🎮</div>
+                                <span>Game Developer</span>
+                            </div>
+                            <div class="skill-node node-2 tilt-card">
+                                <div class="icon">🌐</div>
+                                <span>Web Developer</span>
+                            </div>
+                            <div class="skill-node node-3 tilt-card">
+                                <div class="icon">🔌</div>
+                                <span>IoT Developer</span>
+                            </div>
+                            <div class="skill-node node-4 tilt-card">
+                                <div class="icon">🎬</div>
+                                <span>Video Editor</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="content-section hidden">
+                    <h2 class="section-title">PROJECT HOLOGRAMS</h2>
+                    <div class="projects-grid">
+                        <div class="project-card tilt-card" onclick="openProject('2D Games')">
+                            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=600&q=80"
+                                alt="2D Games">
+                            <h3>2D Games</h3>
+                        </div>
+                        <div class="project-card tilt-card" onclick="openProject('Bash Selection Website')">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80"
+                                alt="Website">
+                            <h3>Bash Selection Website</h3>
+                        </div>
+                        <div class="project-card tilt-card" onclick="openProject('Task Tracker Discord Bot')">
+                            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80"
+                                alt="Discord Bot">
+                            <h3>Task Tracker Discord Bot</h3>
+                        </div>
+                        <div class="project-card tilt-card" onclick="openProject('Smart Home IoT')">
+                            <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80"
+                                alt="IoT">
+                            <h3>Smart Home IoT</h3>
+                        </div>
+                        <div class="project-card tilt-card" onclick="openProject('Live Emotion Detection')">
+                            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80"
+                                alt="Emotion Detection AI">
+                            <h3>Live Emotion Detection</h3>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Clan Memories Section -->
+                <section id="memories" class="content-section hidden">
+                    <h2 class="section-title">CLAN MEMORIES</h2>
+                    <div class="memories-grid" id="memories-grid">
+                        <!-- Generated by JS for 15 items -->
+                    </div>
+                </section>
+
+                <!-- Weekly Bash Section -->
+                <section id="bash" class="content-section hidden">
+                    <h2 class="section-title">WEEKLY BASH</h2>
+                    <div class="bash-grid">
+                        <!-- Generated by JS for 6 items -->
+                    </div>
+                </section>
+
+                <!-- Members Section -->
+                <section id="members" class="content-section hidden">
+                    <h2 class="section-title">CLAN OPERATIVES</h2>
+                    <div class="members-grid" id="members-grid">
+                        <!-- Generated by JS for 12 items -->
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section id="experience" class="content-section hidden">
+                    <h2 class="section-title">MY JOURNEY</h2>
+                    <div class="experience-container glass-panel" style="padding: 30px; border-radius: 12px; border: 1px solid var(--primary-cyan); background: rgba(5, 5, 10, 0.8); box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); margin-top: 20px; position: relative; overflow: hidden;">
+                        <div class="experience-text-content">
+                            <p class="experience-paragraph animate-text" style="--anim-delay: 0s;">
+                                At the beginning of my journey in the Bashers Community, I had <span class="highlight-cyan">zero knowledge</span> about many technical things.<br>
+                                I was also afraid to speak on stage and felt very nervous during meetings and weekly bash sessions.
+                            </p>
+                            
+                            <p class="experience-paragraph animate-text" style="--anim-delay: 1.5s;">
+                                In the starting weeks, I didn’t have the confidence to talk in front of others, and I was worried about making mistakes.<br>
+                                But our <span class="highlight-pink">seniors supported us</span> and guided us in a friendly way. They encouraged us to participate in every activity and helped us learn step by step.
+                            </p>
+                            
+                            <p class="experience-paragraph animate-text" style="--anim-delay: 3s;">
+                                Through the weekly bashes, technical tasks, and team activities, I slowly started learning new skills.<br>
+                                I improved my <span class="highlight-purple">communication, technical knowledge, and teamwork</span>.
+                            </p>
+                            
+                            <p class="experience-paragraph animate-text" style="--anim-delay: 4.5s;">
+                                Now I feel <span class="highlight-cyan">confident</span> to speak on stage, present my ideas, and work with my clan members without fear.<br>
+                                This journey changed me from a zero-knowledge beginner into a confident and active member of the community.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mini Game Section -->
+                <section id="game" class="content-section hidden">
+                    <h2 class="section-title">CYBER RUNNER</h2>
+                    <div id="game-container"
+                        style="position: relative; width: 100%; height: 350px; background: radial-gradient(circle at center, #0a0a20 0%, #020205 100%); border: 2px solid var(--primary-cyan); border-radius: 12px; overflow: hidden; box-shadow: inset 0 0 50px rgba(0, 243, 255, 0.1), 0 0 25px rgba(0, 243, 255, 0.2); margin-top: 20px; cursor: pointer;">
+
+                        <!-- Dynamically Scrolling Cyber Ground -->
+                        <div id="game-ground"
+                            style="position: absolute; bottom: 0; left: 0; width: 200%; height: 40px; background-image: linear-gradient(90deg, rgba(0, 243, 255, 0.3) 2px, transparent 2px), linear-gradient(0deg, rgba(0, 243, 255, 0.3) 2px, transparent 2px); background-size: 40px 40px; border-top: 3px solid var(--primary-cyan); box-shadow: inset 0 20px 20px -20px var(--primary-cyan), 0 -10px 15px rgba(0, 243, 255, 0.2); z-index: 1;">
+                        </div>
+
+                        <!-- High Definition Environment Grid (Static) -->
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px); background-size: 30px 30px; pointer-events: none; z-index: 0;">
+                        </div>
+
+                        <!-- Entities Container (Prevents Rotation Collision Bugs) -->
+                        <div id="game-player"
+                            style="position: absolute; bottom: 40px; left: 50px; width: 40px; height: 40px; z-index: 5;">
+                            <!-- Inner Box handles visuals & rotation, Outer handles strict collision -->
+                            <div id="player-inner"
+                                style="width: 100%; height: 100%; background: var(--primary-pink); border-radius: 8px; box-shadow: 0 0 25px var(--primary-pink); border: 2px solid #fff;">
+                            </div>
+                        </div>
+                        <div id="game-obstacle"
+                            style="position: absolute; bottom: 40px; right: -50px; width: 30px; height: 60px; background: var(--primary-purple); border-radius: 4px; box-shadow: 0 0 25px var(--primary-purple); z-index: 4; border: 1px solid #fff;">
+                        </div>
+
+                        <!-- UI Elements -->
+                        <div
+                            style="position: absolute; top: 15px; left: 20px; z-index: 10; padding: 5px 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--primary-cyan); border-radius: 8px; backdrop-filter: blur(5px);">
+                            <div id="game-score"
+                                style="color: #fff; font-family: 'Orbitron', sans-serif; font-size: 1.5rem; text-shadow: 0 0 10px var(--primary-cyan);">
+                                Score: 0</div>
+                        </div>
+
+                        <div
+                            style="position: absolute; top: 15px; right: 20px; z-index: 10; padding: 5px 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--primary-purple); border-radius: 8px; backdrop-filter: blur(5px);">
+                            <div id="game-hi-score"
+                                style="color: var(--text-main); font-family: 'Orbitron', sans-serif; font-size: 1.2rem; text-shadow: 0 0 10px var(--primary-purple);">
+                                High: 0</div>
+                        </div>
+
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 20; pointer-events: none;">
+                            <div id="game-start-prompt" class="pulse-prompt"
+                                style="width: 100%; color: var(--primary-cyan); font-family: 'Orbitron', sans-serif; font-size: 1.5rem; text-align: center; background: rgba(0,0,0,0.6); padding: 20px 0; border-top: 1px solid var(--primary-cyan); border-bottom: 1px solid var(--primary-cyan); pointer-events: auto;">
+                                <div style="letter-spacing: 5px; text-shadow: 0 0 20px var(--primary-cyan);">SYSTEM
+                                    STANDBY
+                                </div>
+                                <div
+                                    style="font-size: 1rem; color: #fff; margin-top: 10px; font-family: 'Rajdhani', sans-serif; letter-spacing: 2px;">
+                                    [ CLICK OR PRESS SPACEBAR TO ENGAGE HYPER-JUMP ]</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Project Modal (Popup) -->
+    <div id="project-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <span class="close-btn" id="project-close">&times;</span>
+            <h2 id="modal-title">Project Title</h2>
+            <div id="modal-desc" class="modal-body">Project details loading...</div>
+        </div>
+    </div>
+
+    <!-- Member Modal (Popup) -->
+    <div id="member-modal" class="modal hidden">
+        <div class="modal-content glass-panel"
+            style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <span class="close-btn" id="member-close" style="position: absolute; right: 20px; top: 20px;">&times;</span>
+            <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 20px; margin-top: 10px;">
+                <img id="member-modal-img" src="" alt="Member Photo"
+                    style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--primary-cyan); box-shadow: 0 0 25px var(--primary-cyan); object-fit: cover; object-position: center; display: block; margin: 0 auto;">
+            </div>
+            <h2 id="member-modal-name" style="margin-bottom: 5px;">Member Name</h2>
+            <div class="modal-body" style="padding-top: 5px;">
+                <p id="member-modal-role" class="m-role" style="font-size: 1.3rem !important; margin-bottom: 5px;"></p>
+                <p id="member-modal-domain" class="m-domain"
+                    style="font-size: 1.1rem !important; color: #fff !important; margin-bottom: 20px;"></p>
+                <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 15px;">
+                    <p
+                        style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase;">
+                        Assigned Character</p>
+                    <p id="member-modal-character" class="m-character"
+                        style="font-size: 1.5rem !important; color: var(--primary-pink) !important; letter-spacing: 2px; text-shadow: var(--glow-pink);">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
